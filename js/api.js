@@ -1,59 +1,31 @@
-// api.js - OpenWeatherMap API module
+import fs from 'fs/promises';
+import path from 'path';
 
-const API_KEY = 'YOUR_API_KEY_HERE'; // Replace with your OpenWeatherMap API key
-const BASE_URL = 'https://api.openweathermap.org/data/2.5';
+// Convert dt into HH:MM format
+function formatUpdateTime(unixTimestamp) {
+    const date = new Date(unixTimestamp * 1000);
+    const hours = date.getHours().toString().padStart(2, '0');
+    const minutes = date.getMinutes().toString().padStart(2, '0');
+    return `${hours}:${minutes}`;
+}
 
-/**
- * Fetches current weather data for a city
- * @param {string} city - City name
- * @returns {Promise<Object>} Weather data
- */
-export async function fetchWeatherByCity(city) {
+export async function callCasteloBranco() {
     try {
-        const response = await fetch(
-            `${BASE_URL}/weather?q=${encodeURIComponent(city)}&appid=${API_KEY}&units=metric`
-        );
+        // Find the file path relative to where you are running the script
+        const filePath = path.resolve('weather_castelo_branco.json');
         
-        if (!response.ok) {
-            throw new Error(`Weather API error: ${response.status}`);
-        }
+        // Read the file from your hard drive
+        const data = await fs.readFile(filePath, 'utf8');
         
-        return await response.json();
-    } catch (error) {
-        console.error('Error fetching weather:', error);
-        throw error;
+        // Parse the string into a JSON object
+        const rawData = JSON.parse(data);
+        return rawData;
+    } catch (err) {
+        console.error("Could not read the file. Make sure it exists in the root folder!", err);
     }
 }
 
-/**
- * Fetches current weather data by coordinates
- * @param {number} lat - Latitude
- * @param {number} lon - Longitude
- * @returns {Promise<Object>} Weather data
- */
-export async function fetchWeatherByCoords(lat, lon) {
-    try {
-        const response = await fetch(
-            `${BASE_URL}/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
-        );
-        
-        if (!response.ok) {
-            throw new Error(`Weather API error: ${response.status}`);
-        }
-        
-        return await response.json();
-    } catch (error) {
-        console.error('Error fetching weather:', error);
-        throw error;
-    }
-}
-
-/**
- * Fetches weather for multiple cities
- * @param {string[]} cities - Array of city names
- * @returns {Promise<Object[]>} Array of weather data
- */
-export async function fetchWeatherForCities(cities) {
-    const promises = cities.map(city => fetchWeatherByCity(city));
-    return Promise.all(promises);
-}
+// To see the result in your console, we need to await the promise
+const data = await callCasteloBranco();
+console.log(data);
+console.log(`Last updated: ${formatUpdateTime(data.dt)}`);
