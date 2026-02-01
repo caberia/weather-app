@@ -1,0 +1,33 @@
+name: Global Weather Sync
+
+on:
+  schedule:
+    # This runs at :00, :15, :30, and :45 every hour
+    - cron: '0,15,30,45 * * * *'
+  workflow_dispatch: # Allows you to run it manually to test
+
+permissions:
+  contents: write
+
+jobs:
+  update-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Fetch Ankara Weather
+        run: |
+          curl "https://api.openweathermap.org/data/2.5/weather?q=Ankara,TR&appid=${{ secrets.WEATHER_API_KEY }}&units=metric&lang=tr" > weather_ankara.json
+
+      - name: Fetch Castelo Branco Weather
+        run: |
+          curl "https://api.openweathermap.org/data/2.5/weather?q=Castelo%20Branco,PT&appid=${{ secrets.WEATHER_API_KEY }}&units=metric&lang=pt" > weather_castelo_branco.json
+
+      - name: Commit and Push Updates
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add weather_ankara.json weather_castelo_branco.json
+          git commit -m "Automated Weather Update: $(date)" || echo "No changes to commit"
+          git push

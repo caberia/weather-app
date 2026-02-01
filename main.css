@@ -1,0 +1,170 @@
+:root {
+  --step-0: clamp(1rem, 0.9744rem + 0.1136vw, 1.0625rem);
+  --step-1: clamp(1.25rem, 1.1468rem + 0.4589vw, 1.5024rem);
+  --step-2: clamp(1.5625rem, 1.3326rem + 1.0216vw, 2.1244rem);
+  --step-3: clamp(1.9531rem, 1.5233rem + 1.9104vw, 3.0038rem);
+  --step-4: clamp(2.4414rem, 1.7026rem + 3.2837vw, 4.2474rem);
+  --step-5: clamp(3.0518rem, 1.8433rem + 5.3711vw, 6.0059rem);
+  --step-6: clamp(3.8147rem, 1.9011rem + 8.5047vw, 8.4923rem);
+  --color-dark: #121001;
+  --color-light: #FFFCE8;
+  --midnight-blue: #191970;
+  --clear-sky: #87CEEB;
+  --ice-white: #F0F8FF;
+  --cloud-gray: #536878;
+  --golden-hour: linear-gradient(180deg, #191970 0%, #D95555 60%, #FFB347 100%);
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/Satoshi-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Satoshi";
+  src: url("/Satoshi-VariableItalic.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 100 900;
+}
+html {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-dark);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100dvh;
+  width: 100dvw;
+}
+
+* {
+  font-family: "Satoshi", Helvetica, Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  color: var(--color-light);
+  line-height: 0.9;
+  text-box: trim-both cap alphabetic;
+  text-box: trim-cap alphabetic;
+}
+
+p {
+  font-size: var(--step-0);
+}
+
+h1 {
+  font-size: var(--step-6);
+}
+
+h2 {
+  font-size: var(--step-5);
+}
+
+h3 {
+  font-size: var(--step-4);
+}
+
+h4 {
+  font-size: var(--step-3);
+}
+
+h5 {
+  font-size: var(--step-2);
+}
+
+h6 {
+  font-size: var(--step-1);
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "left-pane middle-pane right-pane";
+}
+
+.pane {
+  display: flex;
+  align-items: center;
+}
+
+#left-pane {
+  grid-area: left-pane;
+  height: 100%;
+  padding-right: calc(0.5rem + 1vw);
+  justify-content: flex-end;
+}
+
+#right-pane {
+  grid-area: right-pane;
+  height: 100%;
+  padding-left: calc(0.5rem + 1vw);
+  justify-content: flex-start;
+}
+
+#middle-pane {
+  padding: 1rem;
+  grid-area: middle-pane;
+  height: 100%;
+  justify-content: center;
+}
+
+.weather-card {
+  background-color: var(--color-dark);
+  border: 3px solid var(--color-light);
+  border-radius: 1rem;
+  height: calc(20rem + 5vw);
+  width: calc(15rem + 5vw);
+  padding: calc(1rem + 1vw);
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  grid-template-columns: 1fr;
+  grid-template-areas: "weather-header" "weather-hero" "feels-like-container";
+  gap: 1rem;
+}
+
+.weather-header {
+  grid-area: weather-header;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.weather-hero {
+  grid-area: weather-hero;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.local-time {
+  font-weight: 100;
+  font-style: oblique;
+}
+
+.weather-hero-1 {
+  display: flex;
+  flex-direction: column;
+}
+
+.temperature {
+  font-size: calc(2rem + 1vw);
+  font-weight: 300;
+  color: var(--color-light);
+}
+
+#icon-castelo {
+  color: var(--color-light);
+}
+
+.feels-like-container {
+  grid-area: feels-like-container;
+  display: flex;
+  align-items: center;
+}/*# sourceMappingURL=main.css.map */

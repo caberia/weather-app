@@ -1,0 +1,50 @@
+<!-- index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Weather App</title>
+</head>
+<body>
+    <div class="pane" id="left-pane">
+        <div class="weather-card" id="left-weather-card">
+            <div class="weather-header">
+                <h4 class="city-name">Castelo Branco</h4>
+                <p class="local-time">09:41 AM</p>
+            </div>
+
+            <div class="weather-hero">
+                <div class="weather-hero-1">
+                    <div class="weather-hero-2">
+                        <svg id="icon-castelo" xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-cloud-drizzle-icon lucide-cloud-drizzle"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M8 19v1"/><path d="M8 14v1"/><path d="M16 19v1"/><path d="M16 14v1"/><path d="M12 21v1"/><path d="M12 16v1"/></svg>
+                        <span class="temperature">12°</span>
+                    </div>
+                    <div class="weather-hero-3">
+                        <p class="description">Light Rain</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="feels-like-container">
+                <p class="feels-like">Feels like 10°</p>
+            </div>
+        </div>
+    </div>
+    <div class="pane" id="middle-pane">
+        <p class="distance-display">
+            3423kms
+        </p>
+    </div>
+    <div class="pane" id="right-pane">
+        <div class="weather-card" id="right-weather-card">
+
+        </div>
+    </div>
+
+    <script type="module" src="./js/main.js"></script>
+
+</body>
+</html>
