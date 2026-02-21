@@ -6,7 +6,8 @@
   --step-4: clamp(2.4414rem, 1.7026rem + 3.2837vw, 4.2474rem);
   --step-5: clamp(3.0518rem, 1.8433rem + 5.3711vw, 6.0059rem);
   --step-6: clamp(3.8147rem, 1.9011rem + 8.5047vw, 8.4923rem);
-  --color-dark: #121001;
+  --color-dark: #121000;
+  --color-2: #5DCF5D;
   --color-light: #FFFCE8;
   --midnight-blue: #191970;
   --clear-sky: #87CEEB;
@@ -116,9 +117,10 @@ body {
 }
 
 .weather-card {
-  background-color: var(--color-dark);
+  background-color: var(--color-light);
   border: 3px solid var(--color-light);
   border-radius: 1rem;
+  color: var(--color-dark);
   height: calc(20rem + 5vw);
   width: calc(15rem + 5vw);
   padding: calc(1rem + 1vw);
@@ -127,6 +129,9 @@ body {
   grid-template-columns: 1fr;
   grid-template-areas: "weather-header" "weather-hero" "feels-like-container";
   gap: 1rem;
+}
+.weather-card p, .weather-card h1, .weather-card h2, .weather-card h3, .weather-card h4, .weather-card h5, .weather-card h6 {
+  color: var(--color-dark);
 }
 
 .weather-header {
@@ -156,11 +161,12 @@ body {
 .temperature {
   font-size: calc(2rem + 1vw);
   font-weight: 300;
-  color: var(--color-light);
+  color: var(--color-dark);
 }
 
-#icon-castelo {
-  color: var(--color-light);
+.weather-hero-2 svg {
+  color: var(--color-dark);
+  stroke: var(--color-dark);
 }
 
 .feels-like-container {
