@@ -89,6 +89,7 @@ body {
   grid-template-rows: 1fr;
   grid-template-areas: "left-pane middle-pane right-pane";
   padding: 2rem;
+  height: 100dvh;
 }
 
 .pane {
@@ -184,6 +185,11 @@ body {
   align-items: center;
 }
 
+@media (max-width: 780px) and (max-height: 750px) {
+  body {
+    height: 100%;
+  }
+}
 @media (max-width: 780px) {
   body {
     height: 100vh;
@@ -205,10 +211,5 @@ body {
   #middle-pane {
     padding: 1rem;
     height: auto;
-  }
-}
-@media (max-height: 750px) {
-  body {
-    height: 100%;
   }
 }/*# sourceMappingURL=main.css.map */
