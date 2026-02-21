@@ -18,11 +18,11 @@ jobs:
 
       - name: Fetch Ankara Weather
         run: |
-          curl "https://api.openweathermap.org/data/2.5/weather?q=Ankara,TR&appid=${{ secrets.WEATHER_API_KEY }}&units=metric&lang=tr" > weather_ankara.json
+          curl "https://api.openweathermap.org/data/2.5/weather?q=Ankara,TR&appid=${{ secrets.WEATHER_API_KEY }}&units=metric&lang=pt" > weather_ankara.json
 
       - name: Fetch Castelo Branco Weather
         run: |
-          curl "https://api.openweathermap.org/data/2.5/weather?q=Castelo%20Branco,PT&appid=${{ secrets.WEATHER_API_KEY }}&units=metric&lang=pt" > weather_castelo_branco.json
+          curl "https://api.openweathermap.org/data/2.5/weather?q=Castelo%20Branco,PT&appid=${{ secrets.WEATHER_API_KEY }}&units=metric&lang=tr" > weather_castelo_branco.json
 
       - name: Commit and Push Updates
         run: |
