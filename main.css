@@ -114,6 +114,15 @@ body {
   grid-area: middle-pane;
   height: 100%;
   justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+#heart {
+  color: var(--color-light);
+  fill: var(--color-light);
+  stroke: var(--color-light);
 }
 
 .weather-card {
@@ -121,7 +130,7 @@ body {
   border: 3px solid var(--color-light);
   border-radius: 1rem;
   color: var(--color-dark);
-  height: calc(20rem + 5vw);
+  height: calc(10rem + 5vw + 15vh);
   width: calc(15rem + 5vw);
   padding: calc(1rem + 1vw);
   display: grid;
@@ -173,4 +182,27 @@ body {
   grid-area: feels-like-container;
   display: flex;
   align-items: center;
+}
+
+@media (max-width: 780px) {
+  body {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  #left-pane {
+    padding: 0;
+    height: auto;
+    justify-content: center;
+  }
+  #right-pane {
+    padding: 0;
+    height: auto;
+    justify-content: center;
+  }
+  #middle-pane {
+    padding: 1rem;
+    height: auto;
+  }
 }/*# sourceMappingURL=main.css.map */

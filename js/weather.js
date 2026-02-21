@@ -101,8 +101,9 @@ export function processWeatherData(data) {
  * Renders weather data to a weather card element
  * @param {Object} weatherData - Processed weather data
  * @param {string} cardId - ID of the weather card element
+ * @param {string} feelsLikeLabel - Label for the feels like text
  */
-export function renderWeatherCard(weatherData, cardId) {
+export function renderWeatherCard(weatherData, cardId, feelsLikeLabel = 'Feels like') {
     const card = document.getElementById(cardId);
     if (!card) {
         console.error(`Weather card element not found: ${cardId}`);
@@ -127,18 +128,9 @@ export function renderWeatherCard(weatherData, cardId) {
             </div>
         </div>
         <div class="feels-like-container">
-            <p class="feels-like">Feels like ${formatTemperature(weatherData.feelsLike)}</p>
+            <p class="feels-like">${feelsLikeLabel} ${formatTemperature(weatherData.feelsLike)}</p>
         </div>
     `;
 }
 
-/**
- * Updates the distance display between two cities
- * @param {number} distance - Distance in kilometers
- */
-export function updateDistanceDisplay(distance) {
-    const distanceElement = document.querySelector('.distance-display');
-    if (distanceElement) {
-        distanceElement.textContent = `${distance}kms`;
-    }
-}
+

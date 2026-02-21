@@ -1,7 +1,6 @@
 // main.js - Main entry point and initialization
 
-import { processWeatherData, renderWeatherCard, updateDistanceDisplay } from './weather.js';
-import { calculateDistance } from './utils.js';
+import { processWeatherData, renderWeatherCard } from './weather.js';
 
 /**
  * Loads weather data from local JSON files and renders cards
@@ -22,17 +21,15 @@ async function loadWeatherData() {
         const rightWeather = processWeatherData(ankaraData);
 
         // Render weather cards
-        renderWeatherCard(leftWeather, 'left-weather-card');
-        renderWeatherCard(rightWeather, 'right-weather-card');
+        renderWeatherCard(leftWeather, 'left-weather-card', 'Hissedilen:');
+        renderWeatherCard(rightWeather, 'right-weather-card', 'Sensação Térmica:');
 
-        // Calculate and display distance between cities
-        const distance = calculateDistance(
-            leftWeather.coordinates.lat,
-            leftWeather.coordinates.lon,
-            rightWeather.coordinates.lat,
-            rightWeather.coordinates.lon
-        );
-        updateDistanceDisplay(distance);
+        // Display hardcoded distance
+        const DISTANCE = 3423;
+        const distanceElement = document.querySelector('.distance-display');
+        if (distanceElement) {
+            distanceElement.textContent = `${DISTANCE}kms`;
+        }
 
         console.log('Weather data loaded successfully!');
     } catch (error) {
